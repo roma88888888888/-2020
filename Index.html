@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8">
+  <title>СИМУЛЯТОР ЄВРЕЯ 2025</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #111;
+      color: #fff;
+      text-align: center;
+      padding: 2rem;
+    }
+
+    h1 {
+      color: #f00;
+    }
+
+    #money {
+      font-size: 2rem;
+      margin: 1rem 0;
+    }
+
+    button {
+      padding: 1rem 2rem;
+      font-size: 1.2rem;
+      margin: 1rem;
+      background-color: #f00;
+      border: none;
+      color: white;
+      border-radius: 8px;
+      cursor: pointer;
+    }
+
+    .shop {
+      margin-top: 2rem;
+    }
+
+    .upgrade {
+      background-color: #222;
+      margin: 1rem auto;
+      padding: 1rem;
+      width: 300px;
+      border-radius: 6px;
+    }
+  </style>
+</head>
+<body>
+  <h1>СИМУЛЯТОР ДЕПУТАТА</h1>
+  <div id="money">Гроші: $0</div>
+  <button onclick="shoot()">ВКРАСТИ </button>
+
+  <div class="shop">
+    <h2>Магазин</h2>
+
+    <div class="upgrade">
+      <p>+1$ за клік</p>
+      <button onclick="buyClickPower()">Купити за $50</button>
+    </div>
+
+    <div class="upgrade">
+      <p>+1$ щосекунди</p>
+      <button onclick="buyAuto()">Купити за $100</button>
+    </div>
+  </div>
+
+  <script>
+    let money = 0;
+    let clickPower = 1;
+    let autoPower = 1;
+
+    function updateDisplay() {
+      document.getElementById("money").textContent = "Гроші: $" + money;
+    }
+
+    function shoot() {
+      money += clickPower;
+      updateDisplay();
+    }
+
+    function buyClickPower() {
+      if (money >= 50) {
+        money -= 50;
+        clickPower += 1;
+        updateDisplay();
+      } else {
+        alert("Недостатньо грошей!");
+      }
+    }
+
+    function buyAuto() {
+      if (money >= 100) {
+        money -= 100;
+        autoPower += 1;
+        updateDisplay();
+      } else {
+        alert("Недостатньо грошей!");
+      }
+    }
+
+    setInterval(() => {
+      money += autoPower;
+      updateDisplay();
+    }, 1000);
+  </script>
+</body>
+</html>
